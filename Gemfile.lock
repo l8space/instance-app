@@ -175,6 +175,9 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
+    ddtrace (0.50.0)
+      ffi (~> 1.0)
+      msgpack
     debug_inspector (1.0.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -276,6 +279,7 @@ GEM
       openid_connect (~> 1.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    google-protobuf (3.20.1)
     hamlit (2.13.0)
       temple (>= 0.8.2)
       thor
@@ -439,6 +443,48 @@ GEM
       webfinger (>= 1.0.1)
     openssl (2.2.0)
     openssl-signature_algorithm (0.4.0)
+    opentelemetry-api (1.0.1)
+    opentelemetry-common (0.19.3)
+      opentelemetry-api (~> 1.0)
+    opentelemetry-exporter-otlp (0.21.2)
+      google-protobuf (~> 3.7)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-common (~> 0.19.3)
+      opentelemetry-sdk (~> 1.0)
+    opentelemetry-instrumentation-action_pack (0.1.3)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+      opentelemetry-instrumentation-rack (~> 0.20.0)
+    opentelemetry-instrumentation-action_view (0.2.0)
+      opentelemetry-api (~> 1.0.0)
+      opentelemetry-instrumentation-active_support (~> 0.1.0)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+    opentelemetry-instrumentation-active_record (0.2.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+    opentelemetry-instrumentation-active_support (0.1.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+    opentelemetry-instrumentation-base (0.19.0)
+      opentelemetry-api (~> 1.0)
+    opentelemetry-instrumentation-rack (0.20.1)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-common (~> 0.19.3)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+    opentelemetry-instrumentation-rails (0.20.0)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-instrumentation-action_pack (~> 0.1.3)
+      opentelemetry-instrumentation-action_view (~> 0.2.0)
+      opentelemetry-instrumentation-active_record (~> 0.2.2)
+      opentelemetry-instrumentation-active_support (~> 0.1.0)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+    opentelemetry-sdk (1.0.2)
+      opentelemetry-api (~> 1.0)
+      opentelemetry-common (~> 0.19.3)
+      opentelemetry-instrumentation-base (~> 0.19.0)
+      opentelemetry-semantic_conventions
+    opentelemetry-semantic_conventions (1.8.0)
+      opentelemetry-api (~> 1.0)
     orm_adapter (0.5.0)
     ox (2.14.11)
     parallel (1.22.1)
@@ -601,6 +647,16 @@ GEM
       railties (>= 4.0.0)
     securecompare (1.0.0)
     semantic_range (3.0.0)
+    sentry-rails (4.5.1)
+      railties (>= 5.0)
+      sentry-ruby-core (~> 4.5.0)
+    sentry-ruby (4.5.1)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      faraday (>= 1.0)
+      sentry-ruby-core (= 4.5.1)
+    sentry-ruby-core (4.5.1)
+      concurrent-ruby
+      faraday
     sidekiq (6.4.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
@@ -754,6 +810,7 @@ DEPENDENCIES
   color_diff (~> 0.1)
   concurrent-ruby
   connection_pool
+  ddtrace
   devise (~> 4.8)
   devise-two-factor (~> 4.0)
   devise_pam_authenticatable2 (~> 9.2)
@@ -798,6 +855,9 @@ DEPENDENCIES
   omniauth-cas (~> 2.0)
   omniauth-rails_csrf_protection (~> 0.1)
   omniauth-saml (~> 1.10)
+  opentelemetry-exporter-otlp
+  opentelemetry-instrumentation-rails
+  opentelemetry-sdk
   ox (~> 2.14)
   parslet
   pg (~> 1.3)
@@ -830,6 +890,8 @@ DEPENDENCIES
   ruby-progressbar (~> 1.11)
   sanitize (~> 6.0)
   scenic (~> 1.6)
+  sentry-rails
+  sentry-ruby
   sidekiq (~> 6.4)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-scheduler (~> 3.1)
@@ -851,3 +913,9 @@ DEPENDENCIES
   webpacker (~> 5.4)
   webpush (~> 0.3)
   xorcist (~> 1.1)
+
+RUBY VERSION
+   ruby 2.7.2p137
+
+BUNDLED WITH
+   2.2.32

@@ -33,6 +33,14 @@ gem 'chewy', '~> 7.2'
 gem 'devise', '~> 4.8'
 gem 'devise-two-factor', '~> 4.0'
 
+gem "sentry-ruby"
+gem "sentry-rails"
+gem 'ddtrace', require: 'ddtrace/auto_instrument'
+
+gem 'opentelemetry-sdk'
+gem 'opentelemetry-exporter-otlp'
+gem 'opentelemetry-instrumentation-rails'
+
 group :pam_authentication, optional: true do
   gem 'devise_pam_authenticatable2', '~> 9.2'
 end
