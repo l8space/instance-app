@@ -1588,6 +1588,7 @@ de:
     contrast: Mastodon (Hoher Kontrast)
     default: Mastodon (Dunkel)
     mastodon-light: Mastodon (Hell)
+    full-width: Mastodon (ganze Breite)
   time:
     formats:
       default: "%d.%m.%Y %H:%M"
