@@ -184,13 +184,13 @@ GEM
     crass (1.0.6)
     css_parser (1.12.0)
       addressable
+    date (3.3.3)
     ddtrace (1.6.1)
       debase-ruby_core_source (>= 0.10.16, <= 0.10.17)
       libdatadog (~> 0.9.0.1.0)
       libddwaf (~> 1.5.1.0.0)
       msgpack
     debase-ruby_core_source (0.10.17)
-    date (3.3.3)
     debug_inspector (1.0.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -937,9 +937,9 @@ DEPENDENCIES
   rubocop-rspec
   ruby-progressbar (~> 1.11)
   sanitize (~> 6.0)
+  scenic (~> 1.7)
   sentry-rails
   sentry-ruby
-  scenic (~> 1.7)
   sidekiq (~> 6.5)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-scheduler (~> 4.0)
