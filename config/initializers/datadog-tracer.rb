@@ -1,6 +1,6 @@
 Datadog.configure do |c|
       c.service = 'layer8-mastodon'
-      c.tracing.instrument :rails
+      c.tracing.instrument :rails, service_name: 'layer8-mastodon-rails'
       c.tracing.instrument :sidekiq
       c.tracing.instrument :active_record, service_name: 'layer8-mastodon-active-record'
       c.tracing.instrument :redis, service_name: 'layer8-mastodon-redis'
