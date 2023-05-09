@@ -31,7 +31,7 @@ gem 'browser'
 gem 'charlock_holmes', '~> 0.7.7'
 gem 'chewy', '~> 7.2'
 gem 'devise', '~> 4.8'
-gem 'devise-two-factor', '~> 4.0'
+gem 'devise-two-factor', '~> 4.1'
 
 gem "sentry-ruby"
 gem "sentry-rails"
