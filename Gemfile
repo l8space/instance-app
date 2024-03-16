@@ -34,8 +34,6 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem 'ddtrace', require: 'ddtrace/auto_instrument'
 
-gem 'sidekiq-statistic'
-
 gem 'opentelemetry-sdk'
 gem 'opentelemetry-exporter-otlp'
 gem 'opentelemetry-instrumentation-rails'
