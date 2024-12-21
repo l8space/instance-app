@@ -27,7 +27,7 @@ class FetchLinkCardService < BaseService
     @url = @original_url.to_s
 
     with_redis_lock("fetch:#{@original_url}") do
-      @card = PreviewCard.find_by(url: @url)
+      @card = PreviewCard.where("digest(url::text, 'sha512') = digest(?, 'sha512')", @url).find_by(url: @url)
       process_url if @card.nil? || @card.updated_at <= 2.weeks.ago || @card.missing_image?
     end
 
@@ -61,7 +61,9 @@ class FetchLinkCardService < BaseService
       # the destination URL and not any link shortener in-between, so here
       # we set the URL to the one of the last response in the redirect chain
       @url  = res.request.uri.to_s
-      @card = PreviewCard.find_or_initialize_by(url: @url) if @card.url != @url
+      @card = PreviewCard
+                .where("digest(url::text, 'sha512') = digest(?, 'sha512')", @url)
+                .find_or_initialize_by(url: @url) if @card.url != @url
 
       @html_charset = res.charset
 
@@ -160,7 +162,8 @@ class FetchLinkCardService < BaseService
     provider = PreviewCardProvider.matching_domain(domain)
     linked_account = ResolveAccountService.new.call(link_details_extractor.author_account, suppress_errors: true) if link_details_extractor.author_account.present?
 
-    @card = PreviewCard.find_or_initialize_by(url: link_details_extractor.canonical_url) if link_details_extractor.canonical_url != @card.url
+    @card = PreviewCard.where("digest(url::text, 'sha512') = digest(?, 'sha512')", link_details_extractor.canonical_url)
+                       .find_or_initialize_by(url: link_details_extractor.canonical_url) if link_details_extractor.canonical_url != @card.url
     @card.assign_attributes(link_details_extractor.to_preview_card_attributes)
     @card.author_account = linked_account if linked_account&.can_be_attributed_from?(domain) || provider&.trendable?
     @card.save_with_optional_image! unless @card.title.blank? && @card.html.blank?
