@@ -31,7 +31,6 @@ gem 'chewy', '~> 7.3'
 gem 'devise', '~> 4.9'
 gem 'devise-two-factor'
 
-gem 'ddtrace', require: 'ddtrace/auto_instrument'
 gem 'sentry-rails'
 gem 'sentry-ruby'
 
