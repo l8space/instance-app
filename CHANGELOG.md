@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.3.13] - 2025-09-23
+
+### Security
+
+- Update dependencies
+
+### Fixed
+
+- Fix processing of out-of-order `Update` as implicit updates (#36190 by @ClearlyClaire)
+- Fix getting `Create` and `Update` out of order (#36176 by @ClearlyClaire)
+
+## [4.3.12] - 2025-09-16
+
+### Security
+
+- Update dependencies
+
+### Fixed
+
+- Fix processing of remote edited statuses with new media and no text (#35970 by @unfokus)
+- Fix “Edit” and “Delete & Redraft” on a poll not inserting empty option (#35892 by @ClearlyClaire)
+- Fix self-destruct scheduler behavior on some Redis setups (#35823 by @ClearlyClaire)
+
+## [4.3.11] - 2025-08-05
+
+### Security
+
+- Update dependencies
+- Fix incorrect rate-limit handling [GHSA-84ch-6436-c7mg](https://github.com/mastodon/mastodon/security/advisories/GHSA-84ch-6436-c7mg)
+
+### Fixed
+
+- Fix race condition caused by ActiveRecord query cache in `Create` critical path (#35662 by @ClearlyClaire)
+- Fix WebUI crashing for accounts with `null` URL (#35651 by @ClearlyClaire)
+- Fix friends-of-friends recommendations suggesting already-requested accounts (#35604 by @ClearlyClaire)
+
+## [4.3.10] - 2025-07-23
+
+### Security
+
+- Updated dependencies
+
 ## [4.3.9] - 2025-07-02
 
 ### Changed
